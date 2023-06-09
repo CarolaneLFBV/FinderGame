@@ -20,7 +20,6 @@ struct ContentView: View {
     // JSON Variables
     let items: [String: String] = Bundle.main.decode("items.json")
     @State var currentLabel = "Tap the 'New Word' button to begin"
-
     
     // Alert Variables
     @State private var score = 0
@@ -29,96 +28,88 @@ struct ContentView: View {
     
     // Rounds options Variables
     @State private var rounds = 0
+    @State private var roundsOption = [5, 10, 15]
+    @State private var selectedRound = 5
     
     var body: some View {
         NavigationStack {
-            
-            Spacer()
-                .frame(height: 50)
-            
-            Text(currentLabel)
-            
-            Spacer()
-                .frame(height: 50)
-            
-            VStack{
-                ZStack {
-                    Rectangle()
-                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-                        .foregroundColor(.gray)
-                        .frame(height: 300)
-                        .overlay(
-                            Group {
-                                if uiImage != nil {
-                                    Image(uiImage: uiImage!)
-                                        .resizable()
-                                        .scaledToFit()
+            VStack {
+                Spacer()
+                    .frame(height: 50)
+                
+                Text(currentLabel)
+                
+                Text("\(score)/\(rounds)")
+                
+                Spacer()
+                    .frame(height: 50)
+                
+                VStack{
+                    ZStack {
+                        ImageFrameView()
+                            .overlay(
+                                Group {
+                                    if uiImage != nil {
+                                        Image(uiImage: uiImage!)
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
                                 }
-                            }
-                        )
-                    
-                    if uiImage != nil {
-                        Text("")
-                    } else {
-                        Text("Image will be displayed here")
+                            )
+                        
+                        Text(uiImage != nil ? "": "Image will be displayed here")
                             .captionText()
                     }
-                }
-                
-                Spacer()
-                
-                HStack {
-                    Button("New Word") {
-                        randomizeItems()
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Button("Camera") {
+                            isPresenting = true
+                            sourceType = .camera
+                        }
+                        .buttonStyle(.borderedProminent)
+
+                        Button("New Word") {
+                            randomizeItems()
+                        }
+                        .buttonStyle(.bordered)
+
                     }
                     
-                    Button("Go") {
-                        isPresenting = true
-                        sourceType = .camera
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-                
-                HStack {
-                    if let imageClass = classifier.imageClass {
-                        HStack{
-                            Text("Object:")
+                    HStack {
+                        Text("Object:")
+                    
+                        if let imageClass = classifier.imageClass {
                             Text(imageClass)
-                                .bold()
-                                .foregroundColor(.blue)
-                        }
-                    } else {
-                        HStack{
-                            Text("Object:")
+                                .outputTextStyle()
+                        } else {
                             Text("N/A")
-                                .foregroundColor(.blue)
-                                .bold()
+                                .outputTextStyle()
                         }
                     }
-                }
-                .padding()
-                
-                Button("Verify") {
-                    verifyResult()
-                }
-                
-                Spacer()
-            }
-            .sheet(isPresented: $isPresenting){
-                ImagePicker(uiImage: $uiImage, isPresenting:  $isPresenting, sourceType: $sourceType)
-                    .onDisappear{
-                        verifyImage()
+                    .padding()
+                    
+                    Button("Verify") {
+                        verifyResult()
                     }
-                
+                    
+                    Spacer()
+                }
+                .sheet(isPresented: $isPresenting){
+                    ImagePicker(uiImage: $uiImage, isPresenting:  $isPresenting, sourceType: $sourceType)
+                        .onDisappear{
+                            verifyImage()
+                        }
+                    
+                }
+                .navigationTitle("Find...")
+                .padding()
             }
-            .navigationTitle("Find...")
-            .padding()
         }
         .alert(scoreTitle, isPresented: $isShowingResult) {
-            Button("Ok", role: .none) { }
-            Button("Restart") {
-                restartGame()
-            }
+            Button("Ok") { randomizeItems() }
+            Button("Restart") { restartGame() }
         } message: {
             Text(scoreMessage)
         }

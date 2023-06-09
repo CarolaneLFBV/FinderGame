@@ -17,6 +17,9 @@
 		925021472A2776EE009F2607 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925021462A2776EE009F2607 /* ImageClassifier.swift */; };
 		925021492A27776E009F2607 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925021482A27776E009F2607 /* ImagePicker.swift */; };
 		9250214D2A277EAC009F2607 /* StylingComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9250214C2A277EAC009F2607 /* StylingComponents.swift */; };
+		92987AB42A33A1A30035ECE0 /* ImageFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92987AB32A33A1A30035ECE0 /* ImageFrameView.swift */; };
+		92987AB62A33A9AC0035ECE0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92987AB52A33A9AC0035ECE0 /* SettingsView.swift */; };
+		92987ABA2A33B3540035ECE0 /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92987AB92A33B3540035ECE0 /* GameClass.swift */; };
 		92B315242A2FBC060080B29C /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 92B315232A2FBC060080B29C /* items.json */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,9 @@
 		925021462A2776EE009F2607 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		925021482A27776E009F2607 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		9250214C2A277EAC009F2607 /* StylingComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylingComponents.swift; sourceTree = "<group>"; };
+		92987AB32A33A1A30035ECE0 /* ImageFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFrameView.swift; sourceTree = "<group>"; };
+		92987AB52A33A9AC0035ECE0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		92987AB92A33B3540035ECE0 /* GameClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		92B315232A2FBC060080B29C /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +100,7 @@
 		9250213E2A264305009F2607 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				92987AB92A33B3540035ECE0 /* GameClass.swift */,
 				92B60E6E2A2795F300ABF6CE /* JSON */,
 				9250213F2A264308009F2607 /* CoreML */,
 			);
@@ -116,6 +123,7 @@
 			children = (
 				9250214B2A277E9F009F2607 /* Components */,
 				925021322A2642B5009F2607 /* ContentView.swift */,
+				92987AB52A33A9AC0035ECE0 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				9250214C2A277EAC009F2607 /* StylingComponents.swift */,
+				92987AB32A33A1A30035ECE0 /* ImageFrameView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -207,12 +216,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92987AB62A33A9AC0035ECE0 /* SettingsView.swift in Sources */,
 				9250214D2A277EAC009F2607 /* StylingComponents.swift in Sources */,
+				92987AB42A33A1A30035ECE0 /* ImageFrameView.swift in Sources */,
 				925021432A264333009F2607 /* Classifier.swift in Sources */,
 				925021332A2642B5009F2607 /* ContentView.swift in Sources */,
 				925021472A2776EE009F2607 /* ImageClassifier.swift in Sources */,
 				92102DA02A27970100B1CF1C /* Bundle-Decodable.swift in Sources */,
 				925021492A27776E009F2607 /* ImagePicker.swift in Sources */,
+				92987ABA2A33B3540035ECE0 /* GameClass.swift in Sources */,
 				925021452A277549009F2607 /* MobileNetV2.mlmodel in Sources */,
 				925021312A2642B5009F2607 /* FinderGameApp.swift in Sources */,
 			);
